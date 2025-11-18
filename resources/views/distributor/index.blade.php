@@ -154,13 +154,13 @@
                                             {{ $no + 1 }}.
                                         </td>
                                         <td class="text-xs font-weight-bold mb-8">
-                                            {{ $data->name }}
+                                            {{ $data->nama_distributor	 }}
                                         </td>
                                         <td class="text-xs font-weight-bold mb-8">
-                                            {{ $data->address }}
+                                            {{ $data->alamat_distributor }}
                                         </td>
                                         <td class="text-xs font-weight-bold mb-8">
-                                            {{ $data->phone_number }}
+                                            {{ $data->notelepon_distributor }}
                                         </td>
                                     </tr>
                                     @endforeach
