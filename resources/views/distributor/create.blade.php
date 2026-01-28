@@ -122,7 +122,7 @@
     </nav>
     <!-- End Navbar -->
     <div class="container-fluid py-4" style="display: flex; justify-content: center; align-items: center">
-        <div class="card-body px-0 pt-0 pb-2"" style="width: 700px">
+        <div class="card-body px-0 pt-0 pb-2" style="width: 700px">
                 <form action="{{ route('distributors.store') }}" method="POST" id="frm">
                             @csrf
                             <div class="row ms-3 me-3 mt-3">
@@ -145,8 +145,8 @@
                                 <div class="col-12">
                                     <div class="px-3 pb-3 text-end">
                                         <a href="{{ route('distributors.index') }}" 
-   id="cancelBtn" 
-   class="btn bg-gradient-secondary me-5">Cancel</a>
+                                          id="cancelBtn" 
+                                          class="btn bg-gradient-secondary me-5">Cancel</a>
                                         <button type="submit" id="simpan" class="btn bg-gradient-primary">Save New
                                             {{ $title }}
                                             Data</button>
@@ -221,7 +221,7 @@
                 title: 'Cancelled',
                 text: 'Form has been reset.',
                 icon: 'success',
-                timer: 1500,
+                timer: 500,
                 showConfirmButton: false
             }).then(() => {
                 // 3. Manually navigate to the URL
@@ -231,12 +231,14 @@
     });
 });
 
-    document.getElementById('simpan').addEventListener('click', function() {
+    document.getElementById('simpan').addEventListener('click', function(event) {
+        event.preventDefault(); // Prevent form submission
+        
+        // Validation
         const name = document.getElementById('nama_distributor').value.trim();
         const address = document.getElementById('alamat_distributor').value.trim();
         const phone = document.getElementById('notelepon_distributor').value.trim();
 
-        // Validation
         if (!name || !address || !phone) {
             Swal.fire({
                 title: 'Validation Error',
@@ -247,7 +249,7 @@
             return;
         }
 
-        // Show confirmation dialog
+        // Show confirmation dialog only if validation passes
         Swal.fire({
             title: 'Confirm Submission',
             text: 'Are you sure you want to submit this distributor data?',
@@ -258,17 +260,8 @@
             confirmButtonText: 'Yes, submit it!'
         }).then((result) => {
             if (result.isConfirmed) {
-                // Here you would normally submit the form via AJAX or traditional submission
-                Swal.fire({
-                    title: 'Success!',
-                    text: 'Distributor has been created successfully!',
-                    icon: 'success',
-                    timer: 2000
-                }).then(() => {
-                    // Uncomment the line below when you have a backend endpoint ready
-                    // submitForm();
-                    window.history.back();
-                });
+                // If confirmed, submit the form
+                document.getElementById('frm').submit();
             }
         });
     });

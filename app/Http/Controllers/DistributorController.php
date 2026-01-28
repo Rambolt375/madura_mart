@@ -40,7 +40,7 @@ class DistributorController extends Controller
             'notelepon_distributor'=> 'required'
         ]);
         Distributor::create($data);
-        return redirect('/distributor')->with('success', 'Distributor added successfully!');
+        return redirect()->route('distributors.index')->with('success', 'Distributor added successfully!');
     }
 
     /**

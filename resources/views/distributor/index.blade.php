@@ -122,7 +122,7 @@
     </nav>
     <!-- End Navbar -->
     <div class="container-fluid py-4">
-      <a class="btn bg-gradient-dark mb-3" href="{{ route('distributors.create') }}"><i class="fas fa-plus"></i>&nbsp;&nbsp;Add New Dustributor</a>
+      <a class="btn bg-gradient-dark mb-3" href="{{ route('distributors.create') }}"><i class="fas fa-plus"></i>&nbsp;&nbsp;Add New {{ $title }}</a>
       <div class="row">
             <div class="col-12">
                 <div class="card mb-4">
