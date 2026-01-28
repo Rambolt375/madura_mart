@@ -12,7 +12,6 @@ class DistributorController extends Controller
      */
     public function index()
     {
-        //
             return view('distributor.index', data: [
             'title' => 'Distributor',
             'data' => Distributor::all()
@@ -56,7 +55,10 @@ class DistributorController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        return view('distributor.edit', data: [
+            'title' => 'Edit Distributor',
+            'data' => Distributor::findOrFail($id)
+        ]);
     }
 
     /**
@@ -64,7 +66,13 @@ class DistributorController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $data = $request->validate([
+            'nama_distributor' => 'required',
+            'alamat_distributor' => 'required',
+            'notelepon_distributor' => 'required'
+        ]);
+        Distributor::where('id', $id)->update($data);
+        return redirect()->route('distributors.index')->with('success', 'Distributor updated successfully!');
     }
 
     /**
@@ -72,6 +80,8 @@ class DistributorController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $distributor = Distributor::findOrFail($id);
+        $distributor->delete();
+        return redirect()->route('distributors.index')->with('success', 'Distributor deleted successfully!');
     }
 }

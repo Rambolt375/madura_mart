@@ -14,7 +14,7 @@
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="../pages/dashboard.html">
+            <a class="nav-link {{ $title === '' ? 'active' : '' }}" href="../pages/dashboard.html">
                 <div
                     class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                     <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="18px" height="18px"
@@ -31,7 +31,7 @@
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link  " href="../pages/tables.html">
+            <a class="nav-link  {{ $title === '' ? 'active' : '' }}" href="../pages/tables.html">
                 <div
                     class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#67748e"
@@ -45,7 +45,7 @@
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link  " href="../pages/billing.html">
+            <a class="nav-link  {{ $title === '' ? 'active' : '' }}" href="../pages/billing.html">
                 <div
                     class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                     <svg width="12px" height="12px" viewBox="0 0 43 36" version="1.1"
@@ -71,7 +71,7 @@
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link  " href="../pages/rtl.html">
+            <a class="nav-link  {{ $title === '' ? 'active' : '' }}" href="../pages/rtl.html">
                 <div
                     class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#67748e"
@@ -84,7 +84,7 @@
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link  " href="../pages/rtl.html">
+            <a class="nav-link  {{ $title === '' ? 'active' : '' }}" href="../pages/rtl.html">
                 <div
                     class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#67748e"
@@ -108,7 +108,7 @@
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link  " href="..">
+            <a class="nav-link  {{ $title === '' ? 'active' : '' }}" href="..">
                 <div
                     class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#67748e"
@@ -121,7 +121,7 @@
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link  " href="../pages/rtl.html">
+            <a class="nav-link  {{ $title === '' ? 'active' : '' }}" href="../pages/rtl.html">
                 <div
                     class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#67748e"
@@ -137,7 +137,7 @@
         <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">REPORTS</h6>
         </li>
         <li class="nav-item">
-        <a class="nav-link  " href="../pages/profile.html">
+        <a class="nav-link  {{ $title === '' ? 'active' : '' }}" href="../pages/profile.html">
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
             <svg width="12px" height="12px" viewBox="0 0 46 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                 <title>customer-support</title>
@@ -158,7 +158,7 @@
         </a>
         </li>
         <li class="nav-item">
-        <a class="nav-link  " href="../pages/sign-in.html">
+        <a class="nav-link  {{ $title === '' ? 'active' : '' }}" href="../pages/sign-in.html">
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
             <svg width="12px" height="12px" viewBox="0 0 40 44" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                 <title>document</title>
@@ -178,7 +178,7 @@
         </a>
         </li>
         <li class="nav-item">
-        <a class="nav-link  " href="../pages/sign-up.html">
+        <a class="nav-link  {{ $title === '' ? 'active' : '' }}" href="../pages/sign-up.html">
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><defs><style>.cls-1{fill:#231f20}</style></defs><g id="purchase"><path class="cls-1" d="M28.3 18H24v-3a3 3 0 0 0-6 0v3h-4.3a1.7 1.7 0 0 0-1.7 1.7v1.6a1.71 1.71 0 0 0 1.39 1.7l.18 1H4.29a.29.29 0 0 1-.29-.29V4.29A.29.29 0 0 1 4.29 4h15.42a.29.29 0 0 1 .29.29V9a1 1 0 0 0 2 0V4.29A2.3 2.3 0 0 0 19.71 2H4.29A2.3 2.3 0 0 0 2 4.29v19.42A2.3 2.3 0 0 0 4.29 26h9.63l.31 1.76A2.7 2.7 0 0 0 16.89 30H21a1 1 0 0 0 0-2h-4.11a.71.71 0 0 1-.69-.58L15.42 23h11.16l-.78 4.42a.71.71 0 0 1-.69.58 1 1 0 0 0 0 2 2.7 2.7 0 0 0 2.66-2.24l.84-4.76A1.71 1.71 0 0 0 30 21.3v-1.6a1.7 1.7 0 0 0-1.7-1.7zm-.3 2v1h-4v-1zm-14 0h4v1h-4zm6-5a1 1 0 0 1 2 0v6h-2z"/><path class="cls-1" d="M7 6a1 1 0 1 0 1 1 1 1 0 0 0-1-1zM17 6h-7a1 1 0 0 0 0 2h7a1 1 0 0 0 0-2zM7 10a1 1 0 1 0 1 1 1 1 0 0 0-1-1zM18 11a1 1 0 0 0-1-1h-7a1 1 0 0 0 0 2h7a1 1 0 0 0 1-1zM7 14a1 1 0 1 0 1 1 1 1 0 0 0-1-1zM10 14a1 1 0 0 0 0 2h5a1 1 0 0 0 0-2z"/></g></svg>
                 <title>spaceship</title>
@@ -200,7 +200,7 @@
         </a>
         </li>
         <li class="nav-item">
-        <a class="nav-link  " href="../pages/profile.html">
+        <a class="nav-link  {{ $title === '' ? 'active' : '' }}" href="../pages/profile.html">
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
             <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="57px" height="57px" viewBox="0 0 48 48"> <path fill-rule="evenodd" clip-rule="evenodd" d="M24 4.81384L45.7837 16.0001L24 27.1863L2.21631 16.0001L24 4.81384Z" fill="#1c1f21"></path> <path d="M45.0002 21.314V24.6883L24.0005 35.5L3.00024 24.6911V21.317L24.0003 32.1258L45.0002 21.314Z" fill="#1c1f21" data-color="color-2"></path> <path d="M45.0002 29.314V32.6883L24.0005 43.5L3.00024 32.6911V29.317L24.0003 40.1258L45.0002 29.314Z" fill="#1c1f21" data-color="color-2"></path> </svg>
                 <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -220,7 +220,7 @@
         </a>
         </li>
         <li class="nav-item">
-        <a class="nav-link  " href="../pages/profile.html">
+        <a class="nav-link  {{ $title === '' ? 'active' : '' }}" href="../pages/profile.html">
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
             <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="57px" height="57px" viewBox="0 0 18 18"><rect x="12.5" y="2" width="4" height="14" rx="1.75" ry="1.75" fill="#1c1f21"></rect><rect x="7" y="7" width="4" height="9" rx="1.75" ry="1.75" fill="#1c1f21"></rect><rect x="1.5" y="11" width="4" height="5" rx="1.75" ry="1.75" fill="#1c1f21"></rect><path d="M2.75,9.5c.192,0,.384-.073,.53-.22l4.72-4.72v.689c0,.414,.336,.75,.75,.75s.75-.336,.75-.75V2.75c0-.414-.336-.75-.75-.75h-2.5c-.414,0-.75,.336-.75,.75s.336,.75,.75,.75h.689L2.22,8.22c-.293,.293-.293,.768,0,1.061,.146,.146,.338,.22,.53,.22Z" fill="#1c1f21" data-color="color-2"></path></svg>
                 <title>customer-support</title>

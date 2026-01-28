@@ -2,7 +2,7 @@
 @section('menu')
     @include('layout.menu')
 @endsection
-@section('distributor')
+@section('editdistributor')
         <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl" id="navbarBlur" navbar-scroll="true">
       <div class="container-fluid py-1 px-3">
         <nav aria-label="breadcrumb">
@@ -99,21 +99,22 @@
     <!-- End Navbar -->
     <div class="container-fluid py-4" style="display: flex; justify-content: center; align-items: center">
         <div class="card-body px-0 pt-0 pb-2" style="width: 700px">
-                <form action="{{ route('distributors.store') }}" method="POST" id="frm">
+                <form action="{{ route('distributors.update', $data->id) }}" method="POST" id="frm">
                             @csrf
+                            @method('PATCH')
                             <div class="row ms-3 me-3 mt-3">
                                 <div class="col-12">
                                     <div class="mb-3 px-3 pt-3">
                                         <label for="nama_distributor" class="form-label">Nama Distributor</label>
-                                        <input type="text" class="form-control" id="nama_distributor" name="nama_distributor" placeholder="Enter Distributor Name">
+                                        <input type="text" class="form-control" id="nama_distributor" name="nama_distributor" value="{{ $data->nama_distributor }}" placeholder="Enter Distributor Name">
                                     </div>
                                     <div class="mb-3 px-3 pt-3">
                                         <label for="alamat_distributor" class="form-label">Alamat</label>
-                                        <textarea type="text" class="form-control" id="alamat_distributor" name="alamat_distributor" placeholder="Enter Address" style="height: 100px"></textarea>
+                                        <textarea type="text" class="form-control" id="alamat_distributor" name="alamat_distributor" value="{{ $data->alamat_distributor }}" placeholder="Enter Address" style="height: 100px">{{ $data->alamat_distributor }}</textarea>
                                     </div>
                                     <div class="mb-3 px-3 pt-3">
                                         <label for="notelepon_distributor" class="form-label">No. Telp</label>
-                                        <input type="text" class="form-control" id="notelepon_distributor" name="notelepon_distributor" placeholder="Enter Phone Number">
+                                        <input type="text" class="form-control" id="notelepon_distributor" name="notelepon_distributor" value="{{ $data->notelepon_distributor }}" placeholder="Enter Phone Number">
                                     </div>
                                 </div>
                             </div>
@@ -123,7 +124,7 @@
                                         <a href="{{ route('distributors.index') }}" 
                                           id="cancelBtn" 
                                           class="btn bg-gradient-secondary me-5">Cancel</a>
-                                        <button type="submit" id="simpan" class="btn bg-gradient-primary">Save New
+                                        <button type="submit" id="simpan" class="btn bg-gradient-primary">Update
                                             {{ $title }}
                                             Data</button>
                                     </div>
