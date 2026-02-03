@@ -16,6 +16,9 @@ class UserController extends Controller
             $request->session()->regenerate();
             return redirect()->intended('dashboard');
         }
+        return back()->withErrors([
+            'name' => 'The provided credentials do not match our records.',
+        ])->onlyInput('name');
     }
 
     public function register(Request $request){

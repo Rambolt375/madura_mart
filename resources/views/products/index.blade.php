@@ -1,37 +1,52 @@
-@extends('layout.master', ['title' => $title])
+@extends('layout.master')
 
 @section('content')
+
+    {{-- FLASH MESSAGES --}}
+    @if (session('success'))
+        <div class="alert alert-success alert-dismissible fade show mx-4 mt-3" role="alert">
+            <span class="alert-icon"><i class="ni ni-like-2"></i></span>
+            <span class="alert-text"><strong>Success!</strong> {{ session('success') }}</span>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    @endif
+
     <div class="container-fluid py-4">
-        {{-- ADD BUTTON --}}
-        <a class="btn bg-gradient-dark mb-3" href="{{ route('distributors.create') }}">
-            <i class="fas fa-plus"></i>&nbsp;&nbsp;Add New {{ $title }}
+        {{-- Add Button --}}
+        <a class="btn bg-gradient-dark mb-3" href="{{ route('products.create') }}">
+            <i class="fas fa-plus"></i>&nbsp;&nbsp;Add New Products
         </a>
 
+        {{-- Product Table --}}
         <div class="row">
             <div class="col-12">
                 <div class="card mb-4">
                     <div class="card-header pb-0">
-                        <h6>{{ $title }} table</h6>
+                        <h6>Products table</h6>
                     </div>
                     <div class="card-body px-0 pt-0 pb-2">
                         <div class="table-responsive p-0">
-                            {{-- Added ID 'distributorTable' for precise JS targeting --}}
-                            <table class="table align-items-center mb-0" id="distributorTable">
+                            {{-- Added class 'table' for search script compatibility --}}
+                            <table class="table align-items-center mb-0">
                                 <thead>
                                     <tr>
                                         <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">No.</th>
                                         <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Action</th>
-                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Distributor Name</th>
-                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Address</th>
-                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Phone Number</th>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Code</th>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Name</th>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Category</th>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Expiry Date</th>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Price</th>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Stock</th>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Image</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach ($data as $no => $item)
                                         <tr>
-                                            <td class="text-xs font-weight-bold mb-8 ps-2">
-                                                {{ $no + 1 }}.
-                                            </td>
+                                            <td class="text-xs font-weight-bold mb-8 ps-2">{{ $no + 1 }}.</td>
                                             <td>
                                                 <a href="{{ route('products.edit', $item->id) }}" class="me-2">
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
@@ -50,14 +65,18 @@
                                                     </button>
                                                 </form>
                                             </td>
-                                            <td class="text-xs font-weight-bold mb-8 searchable">
-                                                {{ $item->nama_distributor }}
-                                            </td>
-                                            <td class="text-xs font-weight-bold mb-8 searchable">
-                                                {{ $item->alamat_distributor }}
-                                            </td>
-                                            <td class="text-xs font-weight-bold mb-8 searchable">
-                                                {{ $item->notelepon_distributor }}
+                                            <td class="text-xs font-weight-bold mb-8">{{ $item->code }}</td>
+                                            <td class="text-xs font-weight-bold mb-8">{{ $item->name }}</td>
+                                            <td class="text-xs font-weight-bold mb-8">{{ $item->type ?? 'Other' }}</td>
+                                            <td class="text-xs font-weight-bold mb-8">{{ $item->expiry_date }}</td>
+                                            <td class="text-xs font-weight-bold mb-8">Rp {{ number_format($item->price, 0, ',', '.') }}</td>
+                                            <td class="text-xs font-weight-bold mb-8">{{ $item->stock }}</td>
+                                            <td class="text-xs font-weight-bold mb-8">
+                                                @if($item->image)
+                                                    <img src="{{ asset('storage/images/' . $item->image) }}" alt="{{ $item->name }}" width="50" class="hover-image cursor-pointer">
+                                                @else
+                                                    <span>No Image</span>
+                                                @endif
                                             </td>
                                         </tr>
                                     @endforeach
@@ -69,15 +88,13 @@
             </div>
         </div>
 
-        {{-- FOOTER --}}
+        {{-- Footer --}}
         <footer class="footer pt-3">
             <div class="container-fluid">
                 <div class="row align-items-center justify-content-lg-between">
                     <div class="col-lg-6 mb-lg-0 mb-4">
                         <div class="copyright text-center text-sm text-muted text-lg-start">
-                            © <script>document.write(new Date().getFullYear())</script>,
-                            made with <i class="fa fa-heart"></i> by
-                            <a href="https://www.creative-tim.com" class="font-weight-bold" target="_blank">Creative Tim</a>
+                            © <script>document.write(new Date().getFullYear())</script>, made with <i class="fa fa-heart"></i> by Creative Tim.
                         </div>
                     </div>
                 </div>
@@ -87,20 +104,18 @@
 @endsection
 
 @push('scripts')
+    {{-- SweetAlert2 CDN --}}
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             
-            // 1. FLASH MESSAGES
+            // 1. FLASH MESSAGES (SweetAlert)
             @if (session('success'))
                 Swal.fire({ title: "Good Job!", text: "{{ session('success') }}", icon: "success" });
             @endif
             @if (session('error'))
                 Swal.fire({ title: "Error!", text: "{{ session('error') }}", icon: "error" });
-            @endif
-            @if (session('duplikat'))
-                Swal.fire({ title: "Duplicate!", text: "{{ session('duplikat') }}", icon: "warning" });
             @endif
 
             // 2. DELETE CONFIRMATION
@@ -117,16 +132,14 @@
                         cancelButtonColor: '#d33',
                         confirmButtonText: 'Yes, delete it!'
                     }).then((result) => {
-                        if (result.isConfirmed) {
-                            form.submit();
-                        }
+                        if (result.isConfirmed) form.submit();
                     });
                 });
             });
 
-            // 3. LOGOUT CONFIRMATION (If navbar logout exists in master)
+            // 3. LOGOUT CONFIRMATION
             const logoutForm = document.getElementById('logoutForm');
-            if (logoutForm) {
+            if(logoutForm) {
                 logoutForm.addEventListener('submit', function(event) {
                     event.preventDefault();
                     Swal.fire({
@@ -136,41 +149,35 @@
                         showCancelButton: true,
                         confirmButtonText: 'Yes, logout!'
                     }).then((result) => {
-                        if (result.isConfirmed) {
-                            logoutForm.submit();
-                        }
+                        if (result.isConfirmed) logoutForm.submit();
                     });
                 });
             }
 
-            // 4. IMPROVED SEARCH FUNCTION
-            const searchInput = document.getElementById('navbarSearch');
-            const tableBody = document.querySelector('#distributorTable tbody');
-            
-            if (searchInput && tableBody) {
-                const tableRows = tableBody.querySelectorAll('tr');
+            // 4. IMAGE PREVIEW (Using SweetAlert for cleaner code)
+            const images = document.querySelectorAll('.hover-image');
+            images.forEach(function(img) {
+                img.addEventListener('click', function() {
+                    Swal.fire({
+                        imageUrl: this.src,
+                        imageAlt: this.alt,
+                        showConfirmButton: false,
+                        showCloseButton: true,
+                        width: 'auto' // Auto width for better image fitting
+                    });
+                });
+            });
 
+            // 5. SEARCH FUNCTION
+            const searchInput = document.getElementById('navbarSearch');
+            const tableRows = document.querySelectorAll('.table tbody tr');
+
+            if (searchInput) {
                 searchInput.addEventListener('keyup', function(e) {
                     const searchTerm = e.target.value.toLowerCase();
-
                     tableRows.forEach(row => {
-                        // Get only the text content from cells we care about (using class .searchable)
-                        // If you didn't add the class, it will search the whole row text
-                        const searchableCells = row.querySelectorAll('td.searchable');
-                        let rowText = '';
-                        
-                        if (searchableCells.length > 0) {
-                            searchableCells.forEach(cell => rowText += cell.textContent.toLowerCase());
-                        } else {
-                            // Fallback: search whole row if no classes defined
-                            rowText = row.textContent.toLowerCase();
-                        }
-
-                        if (rowText.includes(searchTerm)) {
-                            row.style.display = ''; 
-                        } else {
-                            row.style.display = 'none'; 
-                        }
+                        const rowText = row.innerText.toLowerCase();
+                        row.style.display = rowText.includes(searchTerm) ? '' : 'none';
                     });
                 });
             }

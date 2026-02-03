@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ProductController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -15,3 +16,4 @@ Route::post('/logout', [UserController::class, 'logout'])->name('logout')->middl
 Route::resource('dashboard', App\Http\Controllers\DashboardController::class)->middleware('auth');
 Route::resource('test', App\Http\Controllers\TestController::class);
 Route::resource('distributors', App\Http\Controllers\DistributorController::class)->middleware('auth');
+Route::resource('products', ProductController::class)->middleware('auth');
