@@ -18,13 +18,12 @@
                                     <div class="mb-3 px-3 pt-3">
                                         <label for="type" class="form-label">Product Type</label>
                                         <select name="type" id="type" class="form-control" value="{{ $data->type }}">
-                                            <option value="">Select Product Type</option>
-                                            <option value="Food">Food</option>
-                                            <option value="Beverage">Beverage</option>
-                                            <option value="Snack">Snack</option>
-                                            <option value="Household">Household</option>
-                                            <option value="Personal Care">Personal Care</option>
-                                            <option value="Other">Other</option>
+                                            <option value="Food" {{ $data->type == 'Food' ? 'selected' : '' }}>Food</option>
+                                            <option value="Beverage" {{ $data->type == 'Beverage' ? 'selected' : '' }}>Beverage</option>
+                                            <option value="Snack" {{ $data->type == 'Snack' ? 'selected' : '' }}>Snack</option>
+                                            <option value="Household" {{ $data->type == 'Household' ? 'selected' : '' }}>Household</option>
+                                            <option value="Personal Care" {{ $data->type == 'Personal Care' ? 'selected' : '' }}>Personal Care</option>
+                                            <option value="Other" {{ $data->type == 'Other' ? 'selected' : '' }}>Other</option>
                                         </select>
                                     </div>
                                     <div class="mb-3 px-3 pt-3">
@@ -41,7 +40,7 @@
                                     </div>
                                     <div class="mb-3 px-3 pt-3">
                                         <label for="image" class="form-label">Product Image</label>
-                                        <input type="file" class="form-control" id="image" name="image" accept="image/*">
+                                        <input type="file" class="form-control" id="image" name="image" accept="image/*" value="{{ $data->image }}">
                                         <small class="text-muted">Leave empty to keep current image</small>
                                     </div>
                                     @if ($data->image)
@@ -49,6 +48,12 @@
                                             <label class="form-label">Current Image Preview</label>
                                             <div class="border rounded p-3" style="text-align: center;">
                                                 <img src="{{ asset('storage/images/' . $data->image) }}" alt="Product Image" style="max-width: 200px; max-height: 200px; object-fit: cover;">
+                                                
+                                                {{-- NEW: Delete Checkbox --}}
+                                                <div class="form-check form-switch mt-3 d-inline-block text-start">
+                                                    <input class="form-check-input" type="checkbox" id="delete_image" name="delete_image" value="1">
+                                                    <label class="form-check-label text-danger font-weight-bold" for="delete_image">Delete this image</label>
+                                                </div>
                                             </div>
                                         </div>
                                     @endif

@@ -97,16 +97,7 @@
         confirmButtonText: 'Yes, cancel it!'
     }).then((result) => {
         if (result.isConfirmed) {
-            Swal.fire({
-                title: 'Cancelled',
-                text: 'Form has been reset.',
-                icon: 'success',
-                timer: 500,
-                showConfirmButton: false
-            }).then(() => {
-                // 3. Manually navigate to the URL
-                window.location.href = url;
-            });
+            window.location.href = url;
         }
     });
 });
@@ -129,7 +120,6 @@
             return;
         }
 
-        // Show confirmation dialog only if validation passes
         Swal.fire({
             title: 'Confirm Submission',
             text: 'Are you sure you want to submit this distributor data?',
@@ -140,7 +130,6 @@
             confirmButtonText: 'Yes, submit it!'
         }).then((result) => {
             if (result.isConfirmed) {
-                // If confirmed, submit the form
                 document.getElementById('frm').submit();
             }
         });
